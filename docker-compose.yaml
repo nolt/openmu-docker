@@ -1,0 +1,48 @@
+services:
+  db:
+    image: postgres:18.3-bookworm
+    container_name: openmu-postgres
+    restart: always
+    networks:
+      - openmu-network
+    environment:
+      - POSTGRES_USER=${DB_USER}
+      - POSTGRES_PASSWORD=${DB_PASS}
+      - POSTGRES_DB=${DB_NAME}
+      - PGDATA=/var/lib/postgresql/data/pgdata
+    volumes:
+      - openmu-db-data:/var/lib/postgresql/data/pgdata
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  openmu:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: openmu-server
+    depends_on:
+      db:
+        condition: service_healthy
+    networks:
+      - openmu-network
+    environment:
+      - DB_HOST=db
+      - DB_ADMIN_USER=${DB_USER}
+      - DB_ADMIN_PW=${DB_PASS}
+      - ASPNETCORE_URLS=http://+:8080
+    ports:
+      - "55901:55901" # GameServer
+      - "44405:44405" # ConnectServerGMO_client
+      - "44406:44406" # ConnectServerOpenSource_client
+      - "${ADM_PORT}:8080"   # Admin_Panel
+    restart: on-failure
+
+networks:
+  openmu-network:
+    driver: bridge
+
+volumes:
+  openmu-db-data:
