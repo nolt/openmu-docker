@@ -12,7 +12,7 @@ RUN git clone https://github.com/MUnique/OpenMU.git .
 
 WORKDIR /src/src/Startup/
 RUN dotnet build MUnique.OpenMU.Startup.csproj -o out -p:ci=true /property:GenerateFullPaths=true
-RUN dotnet publish MUnique.OpenMU.Startup.csproj -c Release -o /opt/serwer -p:ci=true
+RUN dotnet publish MUnique.OpenMU.Startup.csproj -c Release -o /opt/openmu-server -p:ci=true
 
 FROM ubuntu:24.04
 
@@ -23,10 +23,10 @@ RUN apt-get update && apt-get install -y \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
-COPY --from=build /opt/serwer /opt/serwer
+COPY --from=build /opt/openmu-server /opt/openmu-server
 
-RUN chown -R ubuntu:ubuntu /opt/serwer
+RUN chown -R ubuntu:ubuntu /opt/openmu-server
 USER ubuntu
-WORKDIR /opt/serwer
+WORKDIR /opt/openmu-server
 
 ENTRYPOINT ["/bin/bash", "-c", "dotnet ./MUnique.OpenMU.Startup.dll -autostart -resolveIP:local"]
