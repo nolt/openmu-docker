@@ -29,4 +29,4 @@ RUN chown -R ubuntu:ubuntu /opt/openmu-server
 USER ubuntu
 WORKDIR /opt/openmu-server
 
-ENTRYPOINT ["/bin/bash", "-c", "dotnet ./MUnique.OpenMU.Startup.dll -autostart -resolveIP:local"]
+ENTRYPOINT ["/bin/bash", "-c", "dotnet ./MUnique.OpenMU.Startup.dll -autostart"]
