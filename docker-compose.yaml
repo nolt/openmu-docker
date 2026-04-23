@@ -1,6 +1,6 @@
 services:
   db:
-    image: postgres:18.3-bookworm
+    image: postgres:18.3-trixie
     container_name: openmu-postgres
     restart: always
     networks:
@@ -24,6 +24,7 @@ services:
       dockerfile: Dockerfile
     image: openmu:latest
     container_name: openmu-server
+    restart: on-failure
     depends_on:
       db:
         condition: service_healthy
@@ -39,11 +40,12 @@ services:
       - "44405:44405" # ConnectServerGMO_client
       - "44406:44406" # ConnectServerOpenSource_client
       - "${ADM_PORT}:8080"   # Admin_Panel
-    restart: on-failure
 
 networks:
   openmu-network:
+    name: openmu-network
     driver: bridge
 
 volumes:
   openmu-db-data:
+    name: openmu-db
