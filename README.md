@@ -2,7 +2,7 @@
 This is my project to build a ready-to-use OpenMU server.
 
 ## Info
-OpenMU web admin panel address http://localhost:8082
+OpenMU web admin panel address http://localhost:8080
 
 ## Requirements
 - Docker
