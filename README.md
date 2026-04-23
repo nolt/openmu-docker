@@ -24,7 +24,7 @@ If you need to change something in Dockerfile or .env simply made your changes a
 Above command will recreate openmu service on the fly (you dont have to remove/stop whole service or container).
 
 ---
-! WARRNING !
+! WARNING !
 Command below will stop and remove all created containers and volumes (purge).
 
 ```docker compose down -v```
