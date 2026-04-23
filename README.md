@@ -12,11 +12,26 @@ OpenMU web admin panel address http://localhost:8082
 - clone this repository
 - replace values in .env to your own
 - build
-  
+---
+Build your service:
+
 ```docker compose -d --build```
 
-```docker compose down -v``` ← this command will remove containers with all created volumes
+If you need to change something in Dockerfile or .env simply made your changes and run:
+
+```docker compose up -d --build openmu```
+
+Above command will recreate openmu service on the fly (you dont have to remove/stop whole service or container).
+
+---
+! WARRNING !
+Command below will stop and remove all created containers and volumes (purge).
+
+```docker compose down -v```
+
+---
 
 
-More info about OpenMU project you can find here:
+
+More info about OpenMU project you will find here:
 https://github.com/MUnique/OpenMU

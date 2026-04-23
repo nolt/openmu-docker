@@ -10,6 +10,7 @@ services:
       - POSTGRES_PASSWORD=${DB_PASS}
       - POSTGRES_DB=${DB_NAME}
       - PGDATA=/var/lib/postgresql/data/pgdata
+      - TZ=${TIMEZ}
     volumes:
       - openmu-db-data:/var/lib/postgresql/data/pgdata
     healthcheck:
@@ -36,6 +37,7 @@ services:
       - DB_ADMIN_PW=${DB_PASS}
       - RESOLVE_IP=${RES_IP}
       - ASPNETCORE_URLS=http://+:8080
+      - TZ=${TIMEZ}
     ports:
       - "55901:55901" # GameServer
       - "44405:44405" # ConnectServerGMO_client
