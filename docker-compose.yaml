@@ -39,10 +39,11 @@ services:
       - ASPNETCORE_URLS=http://+:8080
       - TZ=${TIMEZ}
     ports:
-      - "55901:55901" # GameServer
-      - "44405:44405" # ConnectServerGMO_client
-      - "44406:44406" # ConnectServerOpenSource_client
-      - "${ADM_PORT}:8080"   # Admin_Panel
+      - "44405:44405" # ConnectServer_GMO_client
+      - "44406:44406" # ConnectServer_OpenSource_client
+      - "55901:55901" # GameServer_GMO_client
+      - "55902:55902" # GameServer_OpenSource_client
+      - "${ADM_PORT}:8080" # Admin_Panel
 
 networks:
   openmu-network:
