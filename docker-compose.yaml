@@ -35,7 +35,6 @@ services:
       - DB_HOST=db
       - DB_ADMIN_USER=${DB_USER}
       - DB_ADMIN_PW=${DB_PASS}
-      - RESOLVE_IP=${RES_IP}
       - ASPNETCORE_URLS=http://+:8080
       - TZ=${TIMEZ}
     ports:
