@@ -15,7 +15,7 @@ OpenMU web admin panel address http://localhost:8080
 ---
 Build your service:
 
-```docker compose -d --build```
+```docker compose up --build```
 
 If you need to change something in Dockerfile or .env simply made your changes and run:
 
