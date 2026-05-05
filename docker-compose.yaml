@@ -42,7 +42,7 @@ services:
       - "44406:44406" # ConnectServer_OpenSource_client
       - "55901:55901" # GameServer_GMO_client
       - "55902:55902" # GameServer_OpenSource_client
-      - "${ADM_PORT}:8080" # Admin_Panel
+      - "${ADM_PORT:-8080}:8080" # Admin_Panel
 
 networks:
   openmu-network:
