@@ -6,7 +6,6 @@ WORKDIR /src
 RUN git clone https://github.com/MUnique/OpenMU.git .
 
 WORKDIR /src/src/Startup/
-RUN dotnet build MUnique.OpenMU.Startup.csproj -o out -p:ci=true /property:GenerateFullPaths=true
 RUN dotnet publish MUnique.OpenMU.Startup.csproj -c Release -o /opt/openmu-server -p:ci=true
 
 FROM mcr.microsoft.com/dotnet/aspnet:10.0-alpine
