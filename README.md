@@ -10,7 +10,11 @@ OpenMU web admin panel address http://localhost:8080
 
 ## Building
 - clone this repository
-- replace values in .env to your own
+- copy `.env.example` to `.env` and set your own values (DB credentials, admin panel port, timezone, backup settings):
+
+  ```cp .env.example .env```
+
+  `.env` is git-ignored, so your local values are never committed and a `git pull` won't overwrite them.
 - build
 ---
 Build your service:

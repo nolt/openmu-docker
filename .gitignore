@@ -1,5 +1,5 @@
 # runtime data & local artifacts
 backups/
-OpenMU
-bin/
-obj/
+
+# local environment (copy from .env.example)
+.env
