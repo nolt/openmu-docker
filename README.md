@@ -38,7 +38,21 @@ Command below will stop and remove all created containers and volumes (purge).
 
 ---
 
+## Ports
 
+Open these ports in your firewall / forward them on the router so players can connect:
+
+| Port | Service |
+|---|---|
+| `44405` | Connect server (GMO client) |
+| `44406` | Connect server (open source client, MuMain) |
+| `45901` | Game server 0 (GMO client) |
+| `45902` | Game server 1 (open source client) |
+
+> Databases created before OpenMU moved the game servers out of the dynamic port
+> range (October 2026) still use `55901`/`55902`. Apply the config update
+> "Move server ports out of the dynamic port range" in the admin panel, then
+> restart the server: `docker compose restart openmu`.
 
 ## Backups
 

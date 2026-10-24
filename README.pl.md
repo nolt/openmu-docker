@@ -38,7 +38,21 @@ Poniższe polecenie zatrzyma i usunie wszystkie utworzone kontenery oraz wolumen
 
 ---
 
+## Porty
 
+Otwórz te porty w firewallu / przekieruj je na routerze, żeby gracze mogli się połączyć:
+
+| Port | Usługa |
+|---|---|
+| `44405` | Connect server (klient GMO) |
+| `44406` | Connect server (klient open source, MuMain) |
+| `45901` | Game server 0 (klient GMO) |
+| `45902` | Game server 1 (klient open source) |
+
+> Bazy założone, zanim OpenMU przeniósł game servery poza zakres portów dynamicznych
+> (październik 2026), dalej używają `55901`/`55902`. Zastosuj w panelu aktualizację
+> konfiguracji „Move server ports out of the dynamic port range”, a potem zrestartuj
+> serwer: `docker compose restart openmu`.
 
 ## Kopie zapasowe
 
