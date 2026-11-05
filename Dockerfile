@@ -20,8 +20,9 @@ FROM mcr.microsoft.com/dotnet/aspnet:10.0-alpine
 RUN apk add --no-cache tzdata icu-libs icu-data-full krb5-libs
 ENV DOTNET_SYSTEM_GLOBALIZATION_INVARIANT=false
 
-COPY --from=build /opt/openmu-server /opt/openmu-server
-RUN chown -R app:app /opt/openmu-server
+# --chown sets the owner while copying; a separate `RUN chown -R` would duplicate
+# the whole server directory in an extra layer (hundreds of MB, slower build).
+COPY --from=build --chown=app:app /opt/openmu-server /opt/openmu-server
 WORKDIR /opt/openmu-server
 USER app
 
